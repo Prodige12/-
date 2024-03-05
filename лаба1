@@ -1,6 +1,7 @@
-#include <iostream>
+#include<iostream>
+using namespace std;
 
-int gcd(int a, int b, int& x, int& y) {
+int d(int a, int b, int& x, int& y) {
     if (b == 0) {
         x = 1;
         y = 0;
@@ -8,25 +9,24 @@ int gcd(int a, int b, int& x, int& y) {
     }
 
     int x1, y1;
-    int d = gcd(b, a % b, x1, y1);
+    int gcd = d(b, a % b, x1, y1);
 
     x = y1;
     y = x1 - (a / b) * y1;
 
-    return d;
+    return gcd;
 }
 
 int main() {
     int a, b;
-    std::cout << "Enter two natural numbers A and B: ";//введите два натуральных числа
-    std::cin >> a >> b;
+    cout << "Enter two natural numbers a and b: ";//Введите два натуральных числа a и b
+    cin >> a >> b;
 
     int x, y;
-    int d = gcd(a, b, x, y);
+    int gcd = d(a, b, x, y);
 
-    std::cout << "NOD(" << a << ", " << b << ") = " << d << std::endl;
-    std::cout << "Numbers x and y for the equation ax + by = d: " << x << ", " << y << std::endl;
-	//Числа x и y для уравнения ax + by = d
-
+    cout << "NOD(" << a << ", " << b << ") = " << gcd << endl;
+    cout << "Solving the equation " << a << "x + " << b << "y = " << gcd << ": x = " << x << ", y = " << y << endl;
+//Решение уравнения
     return 0;
 }
